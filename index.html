@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,194 +10,190 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>STL Southside Vitals</title>
-
     <link rel="stylesheet" href="assets/bootstrap-3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/font-awesome-4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/leaflet-0.7.2/leaflet.css">
     <link rel="stylesheet" href="assets/leaflet-sidebar/L.Control.Sidebar.css">
     <link rel="stylesheet" href="assets/css/main.css">
-
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="assets/js/html5shiv.js"></script>
         <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">STL Southside Vitals</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group has-feedback navbar-right">
-              <input id="searchbox" type="text" placeholder="Search Census Tracts or Neighborhoods" class="form-control">
-              <span id="searchicon" class="fa fa-search form-control-feedback"></span>
-          </div>
-        </form>
-        <ul class="nav navbar-nav">
-          <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
-          <li class="dropdown">
-            <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" style="color: white"></i>&nbsp;&nbsp;Switch Geographies<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-			  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="switchgeo(neighborhoodlayers, tractlayers); return false;"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Neighborhoods</a></li>
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="switchgeo(tractlayers, neighborhoodlayers); return false;"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Census Tracts</a></li>
-              <li class="divider hidden-xs"></li>
-			  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="map.fitBounds(tractbounds.getBounds()); return false;"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">STL Southside Vitals</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group has-feedback navbar-right">
+                    <input id="searchbox" type="text" placeholder="Search Census Tracts or Neighborhoods" class="form-control">
+                    <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+                </div>
+            </form>
+            <ul class="nav navbar-nav">
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
+                <!-- <li class="dropdown">
+                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" style="color: white"></i>&nbsp;&nbsp;Switch Geographies<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="switchgeo(neighborhoodlayers, tractlayers, parcellayers); return false;"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Neighborhoods</a></li>
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="switchgeo(tractlayers, neighborhoodlayers, parcellayers); return false;"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Census Tracts</a></li>
+                        <li class="divider hidden-xs"></li>
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="switchgeo(parcellayers, tractlayers, neighborhoodlayers); return false;"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;Parcels</a></li>
+                        <li class="divider hidden-xs"></li>
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="map.fitBounds(tractbounds.getBounds()); return false;"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download" style="color: white"></i>&nbsp;&nbsp;Download Raw Data<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="data/tractbounds.json" download="tractbounds.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Census Tract Data</a></li>
+                        <li><a href="data/neighborhoods.json" download="neighborhoods.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Neighborhood Data</a></li>
+                    </ul>
+                </li>
+              -->   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;"><i class="fa fa-list" style="color: white"></i>&nbsp;&nbsp;Legend</a></li>
             </ul>
-          </li>
-          <li class="dropdown">
-              <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download" style="color: white"></i>&nbsp;&nbsp;Download Raw Data<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="data/tractbounds.json" download="tractbounds.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Census Tract Data</a></li>
-                <li><a href="data/neighborhoods.json" download="neighborhoods.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Neighborhood Data</a></li>
-              </ul>
-          </li>
-          <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;"><i class="fa fa-list" style="color: white"></i>&nbsp;&nbsp;Legend</a></li>
-        </ul>
-      </div><!--/.navbar-collapse -->
+        </div>
+        <!--/.navbar-collapse -->
     </div>
-
     <div id="map"></div>
     <div id="sidebar">
-      <h3>Legend</h3><hr /><h4>Population Density</h4>
-	  <i style="background:#225EA8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
-	   Over 6,000 per sqmi
-	   <br>
-	   <i style="background:#41B6C4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
-	    4,001 - 6,000 per sqmi
-		<br>
-		<i style="background:#A1DAB4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
-		 2,001 - 4,000 per sqmi
-		 <br>
-		 <i style="background:#FFFFCC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
-		  Up to 2,000 per sqmi
-	  
-	  <hr /><h4>Description</h4>Total population from the 2010 Census divided by number of square miles in Census Tract, neighborhood, or municipality.
+        <h3>Welcome to STL Southside Vitals!</h3>
+        <hr />
+        <h4>About the Online Housing Data Portal</h4>
+        <p>Welcome to STL Southside Vitals - a neighborhood indicators and resource portal for constituents of the DSCC service area. Our mission is to collect and make transparent hard-to-access data that can be used to improve the St. Louis neighborhoods of Dutchtown, Mount Pleasant, Marine Villa, and Gravois Park. This is a service to the region by <a href="http://www.dutchtownorganization.org/" targe="_blank">Dutchtown South Community Corporation (DSCC)</a>.</p>
+        <p>STL Southside Vitals aims to democratize data and make information more accessible to our commmunity residents. For more information about our work, please visit <a href="http://www.risestl.org/" target="_blank">www.risestl.org</a>.</p>
+        <p> This interactive map was built using <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="https://github.com/bmcbride/bootleaf" target="_blank">Bootleaf</a>, and <a href="http://www.mapbox.com/" target="_blank">Mapbox</a>.</p>
+        <p> DSCC welcomes suggestions about how to improve the DSCC Community Vitals website or the methodology used to calculate the indicators found here. Use the "Contact us" form to send us your ideas and comments.</p>
     </div>
-    <div id="loading">
-      <div class="loading-indicator">
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-info" style="width: 100%"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Welcome to STL Southside Vitals!</h4>
-          </div>
-          <div class="modal-body">
-            <ul class="nav nav-tabs" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About</a></li>
-			  <li><a href="#partners" data-toggle="tab"><i class="fa fa-group"></i>&nbsp;Partners</a></li>
-              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-            </ul>
-            <div class="tab-content" id="aboutTabsContent" style="padding-top: 10px;">
-              <div class="tab-pane fade active in" id="about">
-		
-				<p>Welcome to STL Southside Vitals - a neighborhood indicators and resource portal for constituents of the DSCC service area. Our mission is to collect and make transparent hard-to-access data that can be used to improve the St. Louis neighborhoods of Dutchtown, Mount Pleasant, Marine Villa, and Gravois Park. This is a service to the region by <a href="http://www.dutchtownorganization.org/" targe="_blank">Dutchtown South Community Corporation (DSCC)</a>.</p>
-				<p>STL Southside Vitals aims to democratize data and make information more accessible to our commmunity residents.  For more information about our work, please visit <a href="http://www.risestl.org/" target="_blank">www.risestl.org</a>.</p> 
-				<p>This interactive map was built using <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="https://github.com/bmcbride/bootleaf" target="_blank">Bootleaf</a>, and <a href="http://www.mapbox.com/" target="_blank">Mapbox</a>.</p>  
-				<p>DSCC welcomes suggestions about how to improve the DSCC Community Vitals website or the methodology used to calculate the indicators found here.  Use the "Contact us" form to send us your ideas and comments.</p>
-              </div>
-			  <div class="tab-pane fade" id="partners">
-                <p>DSCC partners and logos will go in this tab.</p>
-           <!--  	<ul>
-            		<li>MidAmerica GIS Consortium<br/><img src="assets/img/magiclogo.jpg"/></li>
-            		<li>St. Louis County<br/><img src="assets/img/countylogo.png" width=300px /></li>
-            		<li>Washington University in St. Louis</li>
-            	</ul>
-                <p>Data Gateway grew out of work on a previous strengths-based market data project completed in 2012, the <a href="http://drilldownstl.org/" target="_blank">St. Louis Neighborhood Market DrillDown</a>.  For that reason, Rise would also like to thank our partners on that important effort.  These visionary supporters recognized the value of accurate, accessible, and strength-based data for our region, which in turn opened the door for the development of the Neighborhood Data Gateway site.</p>
-              	<ul>
-              		<li>Housing and Community Solutions, Inc. (co-chair of St. Louis Neighborhood Market DrillDown)</li>
-              		<li>PNC Foundation</li>
-              		<li>Commerce Bank</li>
-              		<li>US Bank</li>
-              		<li>Garfield Foundation</li>
-              		<li>Anonymous Family Foundation</li>
-              		<li>St. Louis County</li>
-              		<li>St. Louis City</li>
-              		<li>AmerenUE</li>
-              		<li>Federal Reserve Bank of St. Louis</li>
-              	</ul> -->
-              </div>
-              <div id="disclaimer" class="tab-pane fade text-danger">
-              <p>Any disclaimer you want to add here</p>
-                <!-- <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Rise Community Development does not guarantee the accuracy, completeness, fitness, or timeliness of this map or the underlying data.</p> -->
-				<br />
-				<p>If you notice an error or have any questions, please contact Jamal Williams at Dutchtown South Community Corporation (jamalwilliams at dscc dot org).</p>
-              </div>
-              <div class="tab-pane fade" id="contact">
-                <form method="post" action="mailto:eleanor@risestl.org" id="contact-form">
-                  <div class="well well-sm">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="first-name">First Name:</label>
-                          <input type="text" class="form-control" id="first-name">
-                        </div>
-                        <div class="form-group">
-                          <label for="last-name">Last Name:</label>
-                          <input type="text" class="form-control" id="last-email">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email:</label>
-                          <input type="text" class="form-control" id="email">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" rows="8" id="message"></textarea>
-                      </div>
-                      <div class="col-md-12">
-                        <p>
-                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              
+<!--     <div id="loading">
+        <div class="loading-indicator">
+            <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-info" style="width: 100%"></div>
             </div>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
+        </div>
+    </div> -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Welcome to STL Southside Vitals!</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="aboutTabs">
+                        <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About</a></li>
+                        <li><a href="#partners" data-toggle="tab"><i class="fa fa-group"></i>&nbsp;Partners</a></li>
+                        <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+                        <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+                    </ul>
+                    <div class="tab-content" id="aboutTabsContent" style="padding-top: 10px;">
+                        <div class="tab-pane fade active in" id="about">
+                            <p>Welcome to STL Southside Vitals - a neighborhood indicators and resource portal for constituents of the DSCC service area. Our mission is to collect and make transparent hard-to-access data that can be used to improve the St. Louis neighborhoods of Dutchtown, Mount Pleasant, Marine Villa, and Gravois Park. This is a service to the region by <a href="http://www.dutchtownorganization.org/" targe="_blank">Dutchtown South Community Corporation (DSCC)</a>.</p>
+                            <p>STL Southside Vitals aims to democratize data and make information more accessible to our commmunity residents. For more information about our work, please visit <a href="http://www.risestl.org/" target="_blank">www.risestl.org</a>.</p>
+                            <p>This interactive map was built using <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="https://github.com/bmcbride/bootleaf" target="_blank">Bootleaf</a>, and <a href="http://www.mapbox.com/" target="_blank">Mapbox</a>.</p>
+                            <p>DSCC welcomes suggestions about how to improve the DSCC Community Vitals website or the methodology used to calculate the indicators found here. Use the "Contact us" form to send us your ideas and comments.</p>
+                        </div>
+                        <div class="tab-pane fade" id="partners">
+                            <p>DSCC partners and logos will go in this tab.</p>
+                            <!--    <ul>
+                <li>MidAmerica GIS Consortium<br/><img src="assets/img/magiclogo.jpg"/></li>
+                <li>St. Louis County<br/><img src="assets/img/countylogo.png" width=300px /></li>
+                <li>Washington University in St. Louis</li>
+              </ul>
+                <p>Data Gateway grew out of work on a previous strengths-based market data project completed in 2012, the <a href="http://drilldownstl.org/" target="_blank">St. Louis Neighborhood Market DrillDown</a>.  For that reason, Rise would also like to thank our partners on that important effort.  These visionary supporters recognized the value of accurate, accessible, and strength-based data for our region, which in turn opened the door for the development of the Neighborhood Data Gateway site.</p>
+                <ul>
+                  <li>Housing and Community Solutions, Inc. (co-chair of St. Louis Neighborhood Market DrillDown)</li>
+                  <li>PNC Foundation</li>
+                  <li>Commerce Bank</li>
+                  <li>US Bank</li>
+                  <li>Garfield Foundation</li>
+                  <li>Anonymous Family Foundation</li>
+                  <li>St. Louis County</li>
+                  <li>St. Louis City</li>
+                  <li>AmerenUE</li>
+                  <li>Federal Reserve Bank of St. Louis</li>
+                </ul> -->
+                        </div>
+                        <div id="disclaimer" class="tab-pane fade text-danger">
+                            <p>Any disclaimer you want to add here</p>
+                            <!-- <p>The data provided on this site is for informational and planning purposes only.</p>
+                <p>Rise Community Development does not guarantee the accuracy, completeness, fitness, or timeliness of this map or the underlying data.</p> -->
+                            <br />
+                            <p>If you notice an error or have any questions, please contact Jamal Williams at Dutchtown South Community Corporation (jamalwilliams at dscc dot org).</p>
+                        </div>
+                        <div class="tab-pane fade" id="contact">
+                            <form method="post" action="#" id="contact-form">
+                                <div class="well well-sm">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="first-name">First Name:</label>
+                                                <input type="text" class="form-control" id="first-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="last-name">Last Name:</label>
+                                                <input type="text" class="form-control" id="last-email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input type="text" class="form-control" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="message">Message:</label>
+                                            <textarea class="form-control" rows="8" id="message"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p>
+                                                <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title text-primary" id="feature-title"></h4>
-          </div>
-          <div class="modal-body" id="feature-info"></div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-primary" id="feature-title"></h4>
+                </div>
+                <div class="modal-body" id="feature-info"></div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script src="data/parcels.js"></script>
+    <script src="data/nbhd.js"></script>
+   <!--  <script src="data/meta.js"></script> -->
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/bootstrap-3.1.1/js/bootstrap.min.js"></script>
     <script src="assets/typeahead/typeahead.bundle.min.js"></script>
     <script src="assets/leaflet-0.7.2/leaflet.js"></script>
     <script src="assets/leaflet-sidebar/L.Control.Sidebar.js"></script>
-	<script src="data/neighborhooddatasimple.json" type="text/javascript"></script>
-	<script src="data/tractdatasimple.json" type="text/javascript"></script>
+    <script src="data/neighborhooddatasimple.json" type="text/javascript"></script>
+    <script src="data/tractdatasimple.json" type="text/javascript"></script>
     <script src="assets/js/datagatewaymap.js"></script>
-  </body>
+</body>
+
 </html>
