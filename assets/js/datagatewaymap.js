@@ -300,12 +300,12 @@ var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/risestl.i1gom766/
 var parcelLayout = L.geoJson(null, {
     style: function(feature) {
         return {
-            color: 'black',
+            color: 'blue',
             fill: false,
             opacity: 1,
-            weight: 2,
+            weight: 3,
             // dashArray: '3',
-            clickable: false
+//             clickable: false
         };
     },
     onEachFeature: function(feature, layer) {
