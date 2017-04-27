@@ -85,10 +85,10 @@ var meta = {
     age: {
         indname: "Housing Age by Decade",
         description: "Percent population identifying as white from the 2010 Census",
-        numclasses: 10,
-        breaks: ['d==0','d>2000', 'd>1990', 'd>1980', 'd>1970', 'd>1960', 'd>1950', 'd>1940', 'd>1930'],
-        colors: [grey, darkblue, lightblue, lightgreen, lightyellow, olivegreen, magenta, deeporange, red, orange],
-        labtext: ['no year','2000-2009', '1990-1999', '1980-1989', '1970-1979', '1960-1969', '1950-1959', '1940-1949', '1930-1939', '1939 or earlier']
+        numclasses: 12,
+        breaks: ['d==0','d>2000', 'd>1990', 'd>1980', 'd>1970', 'd>1960', 'd>1950', 'd>1940', 'd>1930', 'd>1920', 'd>1910', 'd>1900'],
+        colors: [grey, darkblue, lightblue, lightgreen, lightyellow, olivegreen, magenta, deeporange, red, orange, teal, purple ],
+        labtext: ['no year','2000-2009', '1990-1999', '1980-1989', '1970-1979', '1960-1969', '1950-1959', '1940-1949', '1930-1939', '1920-1929', '1919-1910', '1909-1900', 'before 1900']
     },
     backtaxes: {
         indname: "Homes sold for backtaxes",
