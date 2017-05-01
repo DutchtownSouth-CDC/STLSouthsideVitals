@@ -68,15 +68,15 @@ var meta = {
     },
     ownerocc: {
         indname: "Owner Occupied",
-        description: "Youth under 18 as a percent of the total population from the 2010 Census",
+        description: "Number of units that are owner-occuipied. Renter-occupied information forthcoming",
         numclasses: 2,
         breaks: ['d==="Y"'],
         colors: [darkorange, grey],
-        labtext: ['Owner Occupied', 'not owner occupied']
+        labtext: ['Owner Occupied']
     },
     condemed: {
         indname: "Condemned",
-        description: "Seniors over 65 as a percent of the total population from the 2010 Census",
+        description: "Shaded parcels that are condemned",
         numclasses: 2,
         breaks: ['d==="Y"'],
         colors: [darkblue, grey],
@@ -84,7 +84,7 @@ var meta = {
     },
     age: {
         indname: "Housing Age by Decade",
-        description: "Percent population identifying as white from the 2010 Census",
+        description: "",
         numclasses: 12,
         breaks: ['d==0','d>2000', 'd>1990', 'd>1980', 'd>1970', 'd>1960', 'd>1950', 'd>1940', 'd>1930', 'd>1920', 'd>1910', 'd>1900'],
         colors: [grey, darkblue, lightblue, lightgreen, lightyellow, olivegreen, magenta, deeporange, red, orange, teal, purple ],
@@ -116,7 +116,7 @@ var meta = {
     },
     appraisal: {
         indname: "Appraisal Value",
-        description: "Percent Owner-Occupied Housing Units from the 2010 Census",
+        description: "Appraisal value based on assessment value. Not 100% accurate and needs to be updated.",
         numclasses: 7,
         breaks: ['d>500000', 'd>200000', 'd>150000', 'd>100000', 'd>75000', 'd>50000'],
         colors: [darkblue, lightblue, green, lightgreen, lightyellow, orange, red],
