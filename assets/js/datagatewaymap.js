@@ -17,6 +17,14 @@ var lightblue = '#41B6C4';
 var darkblue = '#225EA8';
 var transparent = 'rgba(0,0,0,0)';
 
+// Red Color Scheme from ColorBrewer
+
+var redone = '#fef0d9';
+var redtwo ='#fdcc8a';
+var redthree ='#fc8d59';
+var redfour = '#e34a33';
+var redfive = '#b30000';
+
 var darkorange = '#E66101';
 var lightorange = '#FDB863';
 var lightpurple = '#B2ABD2';
@@ -103,7 +111,7 @@ var meta = {
         description: "Parcels shaded by land use",
         numclasses: 6,
         breaks: ['d=="A"', 'd=="B"', 'd=="C"', 'd=="H"', 'd=="J"', 'd=="K"'],
-        colors: [magenta, olivegreen, red, blue, darkorange, green],
+        colors: [redone, redtwo, redthree, redfour, redfive, darkorange],
         labtext: ['Single Family Residential', 'Two Family Residential', 'Multi-family', 'Commercial', 'Industrial', 'Unrestricted']
     },
     lravac: {
